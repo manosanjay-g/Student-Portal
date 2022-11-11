@@ -3,7 +3,8 @@ const app = express()
 const cors = require('cors')
 require('dotenv').config()
 
-//Routes Initialization
+//Router Initialization
+const adminRouter = require('./routers/admin_router')
 
 //DB Initialization
 const connectDB = require('./configs/database_config');
@@ -13,7 +14,10 @@ const connectDB = require('./configs/database_config');
 //Middleware Initialization
 
 //Routes
-
+app.use(cors())
+app.use(express.json());
+app.use('/public', express.static('public'))
+app.use('/admin', adminRouter)
 app.get('/', (req, res) => {
     res.send("Hello World");
 })
