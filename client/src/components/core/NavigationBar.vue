@@ -21,12 +21,21 @@
         ><p class="my-4 text-2xl text-medium">Attendance</p></router-link
       >
     </div>
-    <p class="text-xl text-red-600 font-medium cursor-pointer">Log out</p>
+    <p class="text-xl text-red-600 font-medium cursor-pointer" @click="logout">
+      Log out
+    </p>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const logout = () => {
+  router.replace("/login");
+};
 
 const userDetails = ref({
   name: "Mano Sanjay",
