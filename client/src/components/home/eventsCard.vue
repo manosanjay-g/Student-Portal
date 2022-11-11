@@ -1,7 +1,7 @@
 <template>
   <div
     id="events-card"
-    class="min-w-auto max-w-lg m-4 max-h-90 bg-neutral-900 rounded-md text-center py-2"
+    class="min-w-auto max-w-lg m-4 max-h-90 bg-neutral-900 rounded-lg text-center py-2"
   >
     <p class="px-2 py-2 text-2xl font-medium">{{ props.card_name }}</p>
     <hr />
