@@ -6,6 +6,7 @@ require('dotenv').config()
 //Routes Initialization
 
 //DB Initialization
+const connectDB = require('./configs/database_config');
 
 //Middleware Declaration
 
@@ -21,6 +22,7 @@ app.get('/', (req, res) => {
 
 const start = async () => {
     try {
+        await connectDB(process.env.MONGODB_URI);
         app.listen(process.env.PORT, () => {
             console.log(`Server listening on PORT ${process.env.PORT}`);
         })
