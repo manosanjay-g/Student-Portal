@@ -5,6 +5,7 @@ require('dotenv').config()
 
 //Router Initialization
 const adminRouter = require('./routers/admin_router')
+const studentRouter = require('./routers/student_router')
 
 //DB Initialization
 const connectDB = require('./configs/database_config');
@@ -18,6 +19,7 @@ app.use(cors())
 app.use(express.json());
 app.use('/public', express.static('public'))
 app.use('/admin', adminRouter)
+app.use('/student', studentRouter)
 app.get('/', (req, res) => {
     res.send("Hello World");
 })
