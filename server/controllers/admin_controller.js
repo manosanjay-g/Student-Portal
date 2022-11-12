@@ -51,7 +51,7 @@ const addStudent = async (req, res) => {
 const readStudent = async (req, res) => {
     try {
         const id = req.params.id
-        const student = await studentModel.find({ _id: id })
+        const student = await studentModel.findOne({ _id: id })
         return res.status(200).json({
             student_res: student
         })
