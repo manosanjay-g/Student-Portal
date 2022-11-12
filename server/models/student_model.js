@@ -37,9 +37,9 @@ const studentSchema = new mongoose.Schema({
             "semester_6": "",
             "semester_7": "",
             "semester_8": "",
-            "current_semester": { type: Map, default: {} },
         }
     },
+    current_semester_results: { type: Map, default: {} },
     attendance_details: { type: Map, default: {} }
 
 }, {
