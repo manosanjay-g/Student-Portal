@@ -32,7 +32,7 @@ const addStudent = async (req, res) => {
             department,
             supervisor,
             college_mail: college_mail.toLowerCase(),
-            password
+            password: encryptedPassword
         });
 
         const token = jwt.sign({
