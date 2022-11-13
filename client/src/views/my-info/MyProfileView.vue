@@ -7,91 +7,94 @@
       >
         <p class="basis-1/2 text-center">Name</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.name }}</p>
+        <p class="basis-1/2 text-center">
+          {{ authStore.$state.userData.name }}
+        </p>
       </div>
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">Roll No</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.rollNo }}</p>
-      </div>
-      <div
-        class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
-      >
-        <p class="basis-1/2 text-center">Role</p>
-        :
-        <p class="basis-1/2 text-center">{{ userInfo.role }}</p>
+        <p class="basis-1/2 text-center">
+          {{ authStore.$state.userData.roll_no }}
+        </p>
       </div>
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">Course</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.course }}</p>
+        <p class="basis-1/2 text-center">
+          {{ authStore.$state.userData.course }}
+        </p>
       </div>
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">Current Semester</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.current_semester }}</p>
+        <p class="basis-1/2 text-center">
+          {{ authStore.$state.userData.current_semester }}
+        </p>
       </div>
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">Date of birth</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.dob }}</p>
+        <p class="basis-1/2 text-center">{{ authStore.$state.userData.dob }}</p>
       </div>
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">Date of Joining</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.doj }}</p>
+        <p class="basis-1/2 text-center">{{ authStore.$state.userData.doj }}</p>
       </div>
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">Sex</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.sex }}</p>
+        <p class="basis-1/2 text-center">{{ authStore.$state.userData.sex }}</p>
       </div>
-      <div
-        class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
-      >
-        <p class="basis-1/2 text-center">Blood Group</p>
-        :
-        <p class="basis-1/2 text-center">{{ userInfo.blood_group }}</p>
-      </div>
+
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">Place of birth</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.place_of_birth }}</p>
+        <p class="basis-1/2 text-center">
+          {{ authStore.$state.userData.place_of_birth }}
+        </p>
       </div>
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">Department</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.department }}</p>
+        <p class="basis-1/2 text-center">
+          {{ authStore.$state.userData.department }}
+        </p>
       </div>
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">Supervisor</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.supervisor }}</p>
+        <p class="basis-1/2 text-center">
+          {{ authStore.$state.userData.supervisor }}
+        </p>
       </div>
       <div
         class="my-4 flex flex-row rounded-md bg-neutral-900 items-center py-6"
       >
         <p class="basis-1/2 text-center">College Mail</p>
         :
-        <p class="basis-1/2 text-center">{{ userInfo.college_mail }}</p>
+        <p class="basis-1/2 text-center">
+          {{ authStore.$state.userData.college_email }}
+        </p>
       </div>
     </div>
     <p class="text-4xl font-semibold mt-8">Educational Info</p>
@@ -108,10 +111,10 @@
         <p class="basis-1/3 text-center">SSC</p>
 
         <p class="basis-1/3 text-center">
-          {{ userEducationalInfo.ssc.percentage }}
+          {{ authStore.$state.userData.ssc.percentage }}%
         </p>
         <p class="basis-1/3 text-center">
-          {{ userEducationalInfo.ssc.year_of_passing }}
+          {{ authStore.$state.userData.ssc.year_of_passing }}
         </p>
       </div>
       <div
@@ -120,10 +123,10 @@
         <p class="basis-1/3 text-center">HSC</p>
 
         <p class="basis-1/3 text-center">
-          {{ userEducationalInfo.hsc.percentage }}
+          {{ authStore.$state.userData.hsc.percentage }}%
         </p>
         <p class="basis-1/3 text-center">
-          {{ userEducationalInfo.hsc.year_of_passing }}
+          {{ authStore.$state.userData.hsc.year_of_passing }}
         </p>
       </div>
     </div>
@@ -131,32 +134,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { useAuthStore } from "../../stores/authStore";
+import { onMounted } from "vue";
 
-const userInfo = ref({
-  name: "Mano Sanjay G",
-  rollNo: "200701142",
-  role: "Student",
-  course: "B.E Computer Science and Engineering",
-  current_semester: "5",
-  doj: "07-11-2020",
-  dob: "07-11-2001",
-  sex: "Male",
-  blood_group: "B+",
-  place_of_birth: "Chennai",
-  department: "Computer Science and Engineering",
-  supervisor: "HOD CSE",
-  college_mail: "200701142@rajalakshmi.edu.in",
-});
-
-const userEducationalInfo = ref({
-  ssc: {
-    percentage: "85%",
-    year_of_passing: "2018",
-  },
-  hsc: {
-    percentage: "85%",
-    year_of_passing: "2020",
-  },
+const authStore = useAuthStore();
+onMounted(() => {
+  authStore.getUserInfo();
 });
 </script>

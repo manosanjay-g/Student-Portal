@@ -4,7 +4,7 @@
     class="mx-4 my-2 max-h-90 bg-neutral-900 rounded-lg text-center py-2"
   >
     <p class="px-2 py-2 text-2xl font-medium">
-      END SEMESTER EXAMINATION RESULTS - EVEN 2021-22
+      END SEMESTER EXAMINATION RESULTS - {{ props.name }}
     </p>
     <hr />
     <div class="flex flex-row px-4 m-4">
@@ -29,5 +29,5 @@
 </template>
 
 <script setup>
-const props = defineProps(["subjects"]);
+const props = defineProps(["subjects", "name"]);
 </script>

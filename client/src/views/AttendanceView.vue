@@ -1,8 +1,13 @@
 <template>
   <div id="attendance-view" class="py-8 px-16">
-    <AttendanceReportCard :subjects="subjectAttendanceReport" />
+    <AttendanceReportCard
+      :subjects="authStore.$state.userData.attendance_details.subjects"
+      :name="authStore.$state.userData.attendance_details.name"
+    />
     <div class="flex flex-row mx-4 my-8 justify-between">
-      <p class="text-xl font-medium">Total Percentage : 100%</p>
+      <p class="text-xl font-medium">
+        Total Percentage : {{ totalPercentage }}%
+      </p>
       <p class="text-xl font-medium">Updated on 29-09-2022</p>
     </div>
   </div>
@@ -10,43 +15,26 @@
 
 <script setup>
 import AttendanceReportCard from "../components/attendance/AttendanceReportCard.vue";
-import { ref } from "vue";
+import { computed } from "vue";
+import { useAuthStore } from "../stores/authStore";
 
-const subjectAttendanceReport = ref([
-  {
-    subject_code: "CS19441",
-    subject_name: "Operating Systems",
-    subject_present: "20",
-    subject_absent: "0",
-    subject_total: "20",
-  },
-  {
-    subject_present: "20",
-    subject_code: "CS19442",
-    subject_name: "Software Engineering",
-    subject_absent: "0",
-    subject_total: "20",
-  },
-  {
-    subject_present: "20",
-    subject_code: "CS19443",
-    subject_name: "Database Management Systems",
-    subject_absent: "0",
-    subject_total: "20",
-  },
-  {
-    subject_present: "20",
-    subject_code: "CS19444",
-    subject_name: "Probability and Statistics",
-    subject_absent: "0",
-    subject_total: "20",
-  },
-  {
-    subject_present: "20",
-    subject_code: "CS19445",
-    subject_name: "Soft Skills",
-    subject_absent: "0",
-    subject_total: "20",
-  },
-]);
+const authStore = useAuthStore();
+
+const totalPercentage = computed(() => {
+  var total = 0;
+  for (
+    let index = 0;
+    index < authStore.$state.userData.attendance_details.subjects.length;
+    index++
+  ) {
+    const subjectPercentage =
+      (authStore.$state.userData.attendance_details.subjects[index]
+        .subject_present /
+        authStore.$state.userData.attendance_details.subjects[index]
+          .subject_total) *
+      100;
+    total += subjectPercentage;
+  }
+  return total / 5;
+});
 </script>

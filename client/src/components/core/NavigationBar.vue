@@ -4,8 +4,12 @@
     class="flex flex-col items-center justify-center text-center"
   >
     <div id="user-info">
-      <p class="text-3xl font-semibold mt-4 mb-2">{{ userDetails.name }}</p>
-      <p class="text-slate-400 text-xl">{{ userDetails.course }}</p>
+      <p class="text-3xl font-semibold mt-4 mb-2">
+        {{ authStore.$state.userData.name }}
+      </p>
+      <p class="text-slate-400 text-xl">
+        {{ authStore.$state.userData.course }}
+      </p>
     </div>
     <div id="nav-items" class="my-8">
       <router-link to="/"
@@ -28,17 +32,15 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
 import { useRouter } from "vue-router";
-
+import { useAuthStore } from "../../stores/authStore";
+import { onMounted } from "vue";
+const authStore = useAuthStore();
 const router = useRouter();
-
+onMounted(() => {
+  authStore.getUserInfo();
+});
 const logout = () => {
   router.replace("/login");
 };
-
-const userDetails = ref({
-  name: "Mano Sanjay",
-  course: "B.E Computer Science and Engineering",
-});
 </script>
