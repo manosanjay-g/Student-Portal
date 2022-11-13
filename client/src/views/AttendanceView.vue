@@ -8,7 +8,10 @@
       <p class="text-xl font-medium">
         Total Percentage : {{ totalPercentage }}%
       </p>
-      <p class="text-xl font-medium">Updated on 29-09-2022</p>
+      <p class="text-xl font-medium">
+        Updated on
+        {{ new Date(authStore.$state.userData.updatedAt).toLocaleDateString() }}
+      </p>
     </div>
   </div>
 </template>
