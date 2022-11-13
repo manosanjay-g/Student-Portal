@@ -58,6 +58,7 @@ const studentSchema = new mongoose.Schema(
       default: {
         name: "-",
         subjects: [],
+        updatedAt: { type: Date, default: Date.now() },
       },
     },
   },

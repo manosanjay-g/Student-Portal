@@ -10,7 +10,11 @@
       </p>
       <p class="text-xl font-medium">
         Updated on
-        {{ new Date(authStore.$state.userData.updatedAt).toLocaleDateString() }}
+        {{
+          new Date(
+            authStore.$state.userData.attendance_details.updatedAt
+          ).toLocaleDateString()
+        }}
       </p>
     </div>
   </div>
