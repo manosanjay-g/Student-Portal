@@ -27,10 +27,10 @@ export const useAuthStore = defineStore("auth", {
     async login(loginInfo) {
       try {
         this.error = null;
-        console.log(loginInfo);
+        console.log(import.meta.env.SERVER_URL);
         // eslint-disable-next-line no-unused-vars
         let response = await axios
-          .post("http://localhost:8080" + "/auth/login", loginInfo)
+          .post(import.meta.env.VITE_SERVER_URL + "/auth/login", loginInfo)
           .then((res) => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
@@ -56,7 +56,7 @@ export const useAuthStore = defineStore("auth", {
         };
         // eslint-disable-next-line no-unused-vars
         const user = await axios
-          .get("http://localhost:8080" + "/student/" + id, config)
+          .get(import.meta.env.VITE_SERVER_URL + "/student/" + id, config)
           .then((res) => {
             this.userData = res.data.student_res;
           });
